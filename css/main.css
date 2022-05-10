@@ -17,7 +17,7 @@ h1 {
     grid-template-columns: 200px 200px 200px 200px 200px;
     grid-template-rows: 200px 200px 200px 200px;
     justify-content: center;
-    position: relative;
+    position: fixed;
 }
 
 .hidden-grid {
@@ -47,4 +47,14 @@ h1 {
 #timer {
     background-color: red;
     color: yellow;
+    padding: 3px 0px 3px 0px;
+    border: 1px solid yellow;
+    text-align: center;
+    width: 100px;
+    margin: auto;
+}
+
+.nav-bar {
+    position: absolute;
+    display: flex;
 }
