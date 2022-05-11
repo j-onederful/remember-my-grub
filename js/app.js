@@ -2,17 +2,17 @@
 //grab all divs (list or array of divs)
 const pictures = document.querySelectorAll('.hidden-pic')
 console.log(pictures[0])
-const imgList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+// const imgList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+const imgList = ['./img/avoToast.png', './img/backyardBurg.JPG', './img/beans.JPG', './img/BLT.JPG', './img/cheeseSteak.png', './img/clubSando.JPG', './img/creamPie.JPG', './img/pretzelBun.png', './img/spicyTuna.png', './img/steakAndEggs.jpg']
 
 // Add images
 function addPic(event) {
     const img = document.createElement("img")
     const num = Math.floor(Math.random() * 10)
-    console.log(imgList[num])
+    // console.log(imgList[num])
     img.src = imgList[num]
-    img.style.height = 200
-    img.style.width = 200
+    img.style.height = '182px'
+    img.style.width = '182px'
     const ele = event.target.lastElementChild
 
     console.log(ele)
