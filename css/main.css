@@ -1,5 +1,6 @@
 html {
     background-color: black;
+    font-family: fantasy;
 }
 
 h1 {
@@ -57,4 +58,5 @@ h1 {
 .nav-bar {
     position: absolute;
     display: flex;
+    font-family: fantasy;
 }
