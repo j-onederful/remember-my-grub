@@ -39,6 +39,7 @@ h1 {
     background-color:cyan;
     border: 4px solid blue;
     margin: 5px;
+    display: block;
 }
 .box:hover {
     background-color: red;
