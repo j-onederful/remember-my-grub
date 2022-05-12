@@ -25,136 +25,101 @@ pictures.forEach((element, index) => {
     img.style.height = '182px'
     img.style.width = '182px'
 
-    element.appendChild(img)
+    element.children[0].appendChild(img)
+    // console.log(element, 'child')
 })
 
 //two variables in global scope to keep track of cards that have been clicked on
 //instantiate these variable to be falsy values
 
 //WIN CONDITION
+let card1 = null
+let card2 = null
+
 let matches = 0
 
 
 document.querySelector("#button-grid").addEventListener('click', function(event) {
-    console.log(event.target.id)
+    // console.log(event.target.id.split('-'))
+    let idNum = event.target.id.split('-')[1]
+    // console.log(idNum)
+    let hiddenPic = document.querySelector(`#pic-${idNum}`)
+    // console.log(hiddenPic.children[0])
+    const boxIds = []
+    boxIds.push(idNum)
+    console.log(event.target)
+    hideElement(event.target)
     //if card one variable is truthy, then the logic happens as card two
-        //compare the two cards to see if same
-            //if images are not the same, flip cards back over and set two card variables to be falsy
+    if (card1 !== null) {
+      card2 = hiddenPic.children[0]
+      // console.log(card2)
+      //compare the two cards to see if same
+      if (card1.src !== card2.src) {
+        //if images are not the same, flip cards back over and set two card variables to be falsy
+        // console.log('cards dont match', boxIds)
+        // console.log(card1.parentElement.id.split('-'))
+        document.getElementById('box-' + card1.parentElement.id.split('-')[1]).style.visibility = 'visible'
+        document.getElementById('box-' + card2.parentElement.id.split('-')[1]).style.visibility = 'visible'
+        // console.log(document.getElementById('box-' + card2.parentElement.id.split('-')[1]))
+        // boxA.style.visibility = 'visible'
+        // boxB.style.visibility = 'visible'
+        console.log(card1.parentElement)
+        console.log(card2.parentElement)
+        card1 = null
+        card2 = null
+        // boxA = null
+        // boxB = null
+      } else {
+        console.log('its a match')
+        card1 = null
+        card2 = null
+        matches++
+        if (matches === 10) {
+          console.log('YOU WIN')
+        }
+      }
+
+    } else {
+      card1 = hiddenPic.children[0]
+    }
+    console.log(card1, card2, 'cards')
+
             //if they are the same, keep them open and increment matches one time
                 //if matches === 10, game is won
     //else if neither are truthy just show the card that was clicked and store event.target for later
-    hideElement(event.target)
 })
 
 function hideElement(box) {
     box.style.visibility = 'hidden'
-    // box.style.display = 'none'
 }
 
+//box.style.visibility = 'visible'
 
 
 
 
-
-
-//Hide overlaying box buttons
-// const box1 = document.getElementById('box-1')
-// box1.addEventListener('click', () => {
-//     box1.style.display = 'none'
-// })
-
-
-
-
-// const box2 = document.getElementById('box-2')
-// box2.addEventListener('click', hideElement.bind(this, box2))
-// // const box3 = document.getElementById('box-3')
-// // box3.addEventListener('click', hideElement.bind(this, box3))
-// const box4 = document.getElementById('box-4')
-// box4.addEventListener('click', hideElement.bind(this, box4))
-// const box5 = document.getElementById('box-5')
-// box5.addEventListener('click', hideElement.bind(this, box5))
-// const box6 = document.getElementById('box-6')
-// box6.addEventListener('click', hideElement.bind(this, box6))
-// const box7 = document.getElementById('box-7')
-// box7.addEventListener('click', hideElement.bind(this, box7))
-// const box8 = document.getElementById('box-8')
-// box8.addEventListener('click', hideElement.bind(this, box8))
-// const box9 = document.getElementById('box-9')
-// box9.addEventListener('click', hideElement.bind(this, box9))
-// const box10 = document.getElementById('box-10')
-// box10.addEventListener('click', hideElement.bind(this, box10))
-// const box11 = document.getElementById('box-11')
-// box11.addEventListener('click', hideElement.bind(this, box11))
-// const box12 = document.getElementById('box-12')
-// box12.addEventListener('click', hideElement.bind(this, box12))
-// const box13 = document.getElementById('box-13')
-// box13.addEventListener('click', hideElement.bind(this, box13))
-// const box14 = document.getElementById('box-14')
-// box14.addEventListener('click', hideElement.bind(this, box14))
-// const box15 = document.getElementById('box-15')
-// box15.addEventListener('click', hideElement.bind(this, box15))
-// const box16 = document.getElementById('box-16')
-// box16.addEventListener('click', hideElement.bind(this, box16))
-// const box17 = document.getElementById('box-17')
-// box17.addEventListener('click', hideElement.bind(this, box17))
-// const box18 = document.getElementById('box-18')
-// box18.addEventListener('click', hideElement.bind(this, box18))
-// const box19 = document.getElementById('box-19')
-// box19.addEventListener('click', hideElement.bind(this, box19))
-// const box20 = document.getElementById('box-20')
-// box20.addEventListener('click', hideElement.bind(this, box20))
-// const boxBtnList = document.querySelectorAll('.box')
-// boxBtnList.forEach(ele => ele.addEventListener('click', hideElement.bind(this, ele)))
-
-// function hide(a) {
-//     // hideElement(a);
-//     timeoutID = window.setTimeout(() => hideElement(a), 2000);
+// //TIMER
+// var seconds = 60;
+// let timer;
+// function myFunction() {
+//   if (seconds < 60) {
+//     document.getElementById("timer").innerHTML = seconds;
 //   }
-  
-// function hideElement(box) {
-//     box.style.display = 'none'
+//    //If seconds are equal or greater than 0, countdown until 1 minute has passed
+//      if (seconds > 0 ) {
+//          seconds--;
+//      } else {
+//          clearInterval(timer);
+//          //Else, clear the timer and alert user that game is over
+//          alert("Time's up champ");
+//      }
 // }
-
-
-//   function hideElement() {
-//     if (this.style.display === "none") {
-//       this.style.display = "block";
-//     } else {
-//       this.style.display = "none";
-//     }
-  
+// document.getElementById("button").onclick = function() {
+//     //When a button is clicked, update the timer using myFunction
+//   if(!timer) {
+//     timer = window.setInterval(function() {
+//       myFunction();
+//     }, 1000);
 //   }
-
-
-
-
-
-
-
-
-//TIMER
-var seconds = 60;
-let timer;
-function myFunction() {
-  if (seconds < 60) {
-    document.getElementById("timer").innerHTML = seconds;
-  }
-   //If seconds are equal or greater than 0, countdown until 1 minute has passed
-     if (seconds > 0 ) {
-         seconds--;
-     } else {
-         clearInterval(timer);
-         //Else, clear the timer and alert user that game is over
-         alert("Time's up champ");
-     }
-}
-document.getElementById("button").onclick = function() {
-    //When a button is clicked, update the timer using myFunction
-  if(!timer) {
-    timer = window.setInterval(function() {
-      myFunction();
-    }, 1000);
-  }
-} 
-document.getElementById("timer").innerHTML="1:00";
+// } 
+// document.getElementById("timer").innerHTML="1:00";
