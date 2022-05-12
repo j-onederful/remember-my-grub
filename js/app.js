@@ -28,6 +28,32 @@ pictures.forEach((element, index) => {
     element.appendChild(img)
 })
 
+//two variables in global scope to keep track of cards that have been clicked on
+//instantiate these variable to be falsy values
+
+//WIN CONDITION
+let matches = 0
+
+
+document.querySelector("#button-grid").addEventListener('click', function(event) {
+    console.log(event.target.id)
+    //if card one variable is truthy, then the logic happens as card two
+        //compare the two cards to see if same
+            //if images are not the same, flip cards back over and set two card variables to be falsy
+            //if they are the same, keep them open and increment matches one time
+                //if matches === 10, game is won
+    //else if neither are truthy just show the card that was clicked and store event.target for later
+    hideElement(event.target)
+})
+
+function hideElement(box) {
+    box.style.visibility = 'hidden'
+    // box.style.display = 'none'
+}
+
+
+
+
 
 
 
@@ -86,9 +112,9 @@ pictures.forEach((element, index) => {
 //     timeoutID = window.setTimeout(() => hideElement(a), 2000);
 //   }
   
-function hideElement(box) {
-    box.style.display = 'none'
-}
+// function hideElement(box) {
+//     box.style.display = 'none'
+// }
 
 
 //   function hideElement() {
