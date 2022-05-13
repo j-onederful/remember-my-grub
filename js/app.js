@@ -50,6 +50,10 @@ let card1 = null
 let card2 = null
 let matches = 0
 
+const strBtn = document.getElementById('start-game')
+strBtn.addEventListener('click', () => {
+
+
 
 document.querySelector("#button-grid").addEventListener('click', function(event) {
     // console.log(event.target.id.split('-'))
@@ -100,13 +104,13 @@ document.querySelector("#button-grid").addEventListener('click', function(event)
                 //if matches === 10, game is won
     //else if neither are truthy just show the card that was clicked and store event.target for later
 })
-
+})
 function hideElement(box) {
     box.style.visibility = 'hidden'
 }
 
-
-
+const newGMBtn = document.getElementById('new-button')
+newGMBtn.addEventListener('click', () => window.location.reload())
 
 
 
