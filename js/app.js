@@ -1,11 +1,27 @@
 // Constants
 //grab all divs (list or array of divs)
 const pictures = document.querySelectorAll('.hidden-pic')
-const buttons = document.querySelectorAll('.box')
 console.log(pictures[0])
 const imgList = ['./img/avoToast.png', './img/avoToast.png', './img/backyardBurg.JPG', './img/backyardBurg.JPG', './img/beans.JPG', './img/beans.JPG', './img/BLT.JPG', './img/BLT.JPG', './img/cheeseSteak.png', './img/cheeseSteak.png', './img/clubSando.JPG', './img/clubSando.JPG', './img/creamPie.JPG', './img/creamPie.JPG', './img/pretzelBun.png', './img/pretzelBun.png', './img/spicyTuna.png', './img/spicyTuna.png', './img/steakAndEggs.jpg', './img/steakAndEggs.jpg']
-const buttonArray = []
+const instructions = document.querySelector("#instruction-button")
+const hideInstructionsButton = document.querySelector("#hide-instructions")
+const instructionsContainer = document.querySelector("#instructions-container")
 
+
+// show instructions
+const showInstructions = () => {
+  instructionsContainer.classList.remove("hidden")
+};
+
+// hide instructions
+const hideInstructions = () => {
+  instructionsContainer.classList.add("hidden")
+};
+//Event listeners for instructions
+instructions.addEventListener("click", showInstructions)
+hideInstructionsButton.addEventListener("click", hideInstructions)
+
+//Randomize Images inside array
 let randomList = imgList.sort(() => {
     return Math.random() - .5
   })
@@ -13,11 +29,7 @@ let randomList = imgList.sort(() => {
 console.log(randomList)
 
 
-
 // Add images
-// function addPic(event) {
-    
-// }
 pictures.forEach((element, index) => {
     const img = document.createElement("img")
     // console.log(imgList[num])
@@ -29,13 +41,13 @@ pictures.forEach((element, index) => {
     // console.log(element, 'child')
 })
 
-//two variables in global scope to keep track of cards that have been clicked on
-//instantiate these variable to be falsy values
+
 
 //WIN CONDITION
+  //two variables in global scope to keep track of cards that have been clicked on
+  //instantiate these variable to be falsy values
 let card1 = null
 let card2 = null
-
 let matches = 0
 
 
@@ -93,7 +105,7 @@ function hideElement(box) {
     box.style.visibility = 'hidden'
 }
 
-//box.style.visibility = 'visible'
+
 
 
 
