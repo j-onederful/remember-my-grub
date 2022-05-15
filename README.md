@@ -1,6 +1,9 @@
 # __Remember Your Grub__
-https://j-onederful.github.io/remember-my-grub/
+ 
+ ### Play game here:
+ https://j-onederful.github.io/remember-my-grub/
  ---
+ 
  ### What's happenin
  ---
  In this game the player must rely on their memory to match which up two of the same types of food in a 20 box grid. In order to succeed, player must match all of the food.
