@@ -135,6 +135,22 @@ const allPicBoxes = document.querySelectorAll('.pict')
 console.log(allPicBoxes[0].firstChild)
 console.log(allBoxes)
 // const newGMBtn = document.getElementById('new-button')
+newGMBtn.addEventListener('click', () => {
+ 
+  allBoxes.forEach(box => {
+    if (box.classList.contains('hidden'))
+    box.classList.remove('hidden')
+  })
+  allPicBoxes.forEach(pict => {
+    pict.firstChild.remove()
+  })
+  randomize()
+  randomizePics()
+  matches = 0
+  card1 = null
+  card2 = null
+  console.log('reset')
+})
 
 
 
