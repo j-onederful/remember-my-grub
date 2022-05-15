@@ -1,12 +1,12 @@
 // Constants
 //grab all divs (list or array of divs)
 const pictures = document.querySelectorAll('.hidden-pic')
-console.log(pictures[0])
+// console.log(pictures[0])
 const imgList = ['./img/avoToast.png', './img/avoToast.png', './img/backyardBurg.JPG', './img/backyardBurg.JPG', './img/beans.JPG', './img/beans.JPG', './img/BLT.JPG', './img/BLT.JPG', './img/cheeseSteak.png', './img/cheeseSteak.png', './img/clubSando.JPG', './img/clubSando.JPG', './img/creamPie.JPG', './img/creamPie.JPG', './img/pretzelBun.png', './img/pretzelBun.png', './img/spicyTuna.png', './img/spicyTuna.png', './img/steakAndEggs.jpg', './img/steakAndEggs.jpg']
 const instructions = document.querySelector("#instruction-button")
 const hideInstructionsButton = document.querySelector("#hide-instructions")
 const instructionsContainer = document.querySelector("#instructions-container")
-
+const newGMBtn = document.getElementById('new-button')
 
 // show instructions
 const showInstructions = () => {
@@ -21,27 +21,37 @@ const hideInstructions = () => {
 instructions.addEventListener("click", showInstructions)
 hideInstructionsButton.addEventListener("click", hideInstructions)
 
+let randomList
+
 //Randomize Images inside array
-let randomList = imgList.sort(() => {
+const randomize = () => {
+randomList = imgList.sort(() => {
     return Math.random() - .5
   })
-  let index = 0
-console.log(randomList)
+  // let index = 0
+  console.log('scrambled')
+  return randomList
+}
+
+console.log(randomize())
 
 
 // Add images
-pictures.forEach((element, index) => {
+const randomizePics = () => {
+
+  pictures.forEach((element, index) => {
     const img = document.createElement("img")
     // console.log(imgList[num])
     img.src = randomList[index] 
     img.style.height = '182px'
     img.style.width = '182px'
-
+    
     element.children[0].appendChild(img)
     // console.log(element, 'child')
-})
+  })
+}
 
-
+randomizePics()
 
 //WIN CONDITION
   //two variables in global scope to keep track of cards that have been clicked on
@@ -63,28 +73,38 @@ document.querySelector("#button-grid").addEventListener('click', function(event)
     // console.log(hiddenPic.children[0])
     const boxIds = []
     boxIds.push(idNum)
-    console.log(event.target)
+    // console.log(event.target)
     hideElement(event.target)
+   
     //if card one variable is truthy, then the logic happens as card two
     if (card1 !== null) {
+      
       card2 = hiddenPic.children[0]
+     
       // console.log(card2)
       //compare the two cards to see if same
+      setTimeout(() => {
+      
       if (card1.src !== card2.src) {
         //if images are not the same, flip cards back over and set two card variables to be falsy
         // console.log('cards dont match', boxIds)
         // console.log(card1.parentElement.id.split('-'))
-        document.getElementById('box-' + card1.parentElement.id.split('-')[1]).style.visibility = 'visible'
-        document.getElementById('box-' + card2.parentElement.id.split('-')[1]).style.visibility = 'visible'
+        // document.getElementById('box-' + card1.parentElement.id.split('-')[1]).style.visibility = 'visible'
+        // document.getElementById('box-' + card2.parentElement.id.split('-')[1]).style.visibility = 'visible'
+        document.getElementById('box-' + card1.parentElement.id.split('-')[1]).classList.remove('hidden') 
+        document.getElementById('box-' + card2.parentElement.id.split('-')[1]).classList.remove('hidden')
+       
+
         // console.log(document.getElementById('box-' + card2.parentElement.id.split('-')[1]))
         // boxA.style.visibility = 'visible'
         // boxB.style.visibility = 'visible'
-        console.log(card1.parentElement)
-        console.log(card2.parentElement)
+        // console.log(card1.parentElement)
+        // console.log(card2.parentElement)
         card1 = null
         card2 = null
         // boxA = null
         // boxB = null
+        
       } else {
         console.log('its a match')
         card1 = null
@@ -94,9 +114,11 @@ document.querySelector("#button-grid").addEventListener('click', function(event)
           console.log('YOU WIN')
         }
       }
+    }, 800)
 
     } else {
       card1 = hiddenPic.children[0]
+
     }
     console.log(card1, card2, 'cards')
 
@@ -106,13 +128,36 @@ document.querySelector("#button-grid").addEventListener('click', function(event)
 })
 })
 function hideElement(box) {
-    box.style.visibility = 'hidden'
+  box.classList.add('hidden')
 }
+const allBoxes = document.querySelectorAll('.box')
+const allPicBoxes = document.querySelectorAll('.pict')
+console.log(allPicBoxes[0].firstChild)
+console.log(allBoxes)
+// const newGMBtn = document.getElementById('new-button')
 
-const newGMBtn = document.getElementById('new-button')
-newGMBtn.addEventListener('click', () => window.location.reload())
 
 
+  
+  // let gameBoard = document.querySelector(".game-board");
+  // let rows = document.querySelectorAll(".row");
+  // rows.forEach(child => {
+  //     gameBoard.removeChild(child);
+  // });
+  // round = 1;
+  // solution = [];
+  // guesses = [];
+  // gameLevel = 0;
+  // buttons.classList.add("hidden");
+  // levels.classList.remove("hidden");
+  // answer.forEach(circle => {
+  //     let attribute = circle.getAttribute("class")
+  //     colors.forEach(color => {
+  //         if (attribute.includes(`${color}`)) {
+  //             circle.classList.remove(`${color}`);
+  //         };
+  //     });
+  // });
 
 // //TIMER
 // var seconds = 60;
